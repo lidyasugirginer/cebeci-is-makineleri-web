@@ -211,8 +211,9 @@
 }
 
 .bottomContainer {
-  width: min(1180px, calc(100% - 48px));
+  width: 100%;
   min-height: 44px;
+  padding: 0 104px 0 max(24px, calc((100% - 1180px) / 2));
   margin-inline: auto;
   display: flex;
   align-items: center;
@@ -234,6 +235,21 @@
 }
 
 .bottomContainer a:hover {
+  color: var(--color-accent);
+}
+
+.copyright {
+  line-height: 1.5;
+  text-align: right;
+}
+
+.bottomContainer .creditLink {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: inherit;
+  font-weight: 700;
+}
+
+.bottomContainer .creditLink:hover {
   color: var(--color-accent);
 }
 
@@ -275,6 +291,11 @@
     padding: 14px 0;
     flex-direction: column;
     justify-content: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .copyright {
     text-align: center;
   }
 }

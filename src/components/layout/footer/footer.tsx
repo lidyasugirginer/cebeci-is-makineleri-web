@@ -145,14 +145,22 @@ export function Footer() {
 
       <div className={styles.bottomBar}>
         <div className={styles.bottomContainer}>
-          <p>
-            © {new Date().getFullYear()} Cebeci İş Makineleri.
-            Tüm hakları saklıdır.
-          </p>
-
           <a href="/iletisim">
             İletişim
           </a>
+
+          <p className={styles.copyright}>
+            © {new Date().getFullYear()}, Cebeci İş Makineleri. Powered
+            by{' '}
+            <a
+              href="https://birbucukadanaformula.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.creditLink}
+            >
+              1.5 Adana Formula Student
+            </a>
+          </p>
         </div>
       </div>
     </footer>
