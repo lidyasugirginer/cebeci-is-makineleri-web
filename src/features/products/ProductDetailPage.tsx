@@ -6,7 +6,7 @@ import styles from './productDetailPage.module.css'
 
 export function ProductDetailPage() {
   const { productId } = useParams<{ productId: string }>()
-  const phoneNumber = '905322326452'
+  const phoneNumber = '905412326452'
   
   // Örnek: Eğer productId gelmezse test amaçlı ilk ürünü göster
   const product = productId 

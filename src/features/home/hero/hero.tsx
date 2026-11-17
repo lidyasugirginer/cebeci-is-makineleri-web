@@ -34,10 +34,10 @@ export function Hero() {
             </a>
 
             <a
-              href="https://wa.me/903221234567"
+              href={`https://wa.me/905412326452?text=${encodeURIComponent('Merhaba, Cebeci İş Makineleri ile iletişime geçmek istiyorum.')}`}
               className={styles.secondaryButton}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               WhatsApp
             </a>

@@ -1,11 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { MobileMenu } from '../mobileMenu/mobileMenu'
 import { Navigation } from '../navigation/navigation'
 import styles from './header.module.css'
 
+const PRODUCT_CATALOG_PATHS = ['/urun-gruplari', '/urunler']
+
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] =
     useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const isProductsPage = PRODUCT_CATALOG_PATHS.includes(location.pathname)
+  const urlQuery = new URLSearchParams(location.search).get('q') ?? ''
+  const [draftState, setDraftState] = useState({
+    path: location.pathname,
+    value: '',
+  })
+
+  const searchTerm = isProductsPage
+    ? urlQuery
+    : draftState.path === location.pathname
+      ? draftState.value
+      : ''
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen
@@ -17,6 +35,33 @@ export function Header() {
     }
   }, [isMobileMenuOpen])
 
+  const handleSearchChange = (value: string) => {
+    if (isProductsPage) {
+      const nextParams = new URLSearchParams(location.search)
+      if (value) {
+        nextParams.set('q', value)
+      } else {
+        nextParams.delete('q')
+      }
+      const nextSearch = nextParams.toString()
+      navigate(
+        nextSearch ? `${location.pathname}?${nextSearch}` : location.pathname,
+        { replace: true },
+      )
+      return
+    }
+
+    setDraftState({ path: location.pathname, value })
+  }
+
+  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const trimmed = searchTerm.trim()
+    const targetPath = isProductsPage ? location.pathname : '/urun-gruplari'
+
+    navigate(trimmed ? `${targetPath}?q=${encodeURIComponent(trimmed)}` : targetPath)
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -27,19 +72,15 @@ export function Header() {
                 <span aria-hidden="true">☎</span>
                 0 (322) 428 11 22
               </a>
-              <a href="tel:+905322326452">
+              <a href="tel:+905412326452">
                 <span aria-hidden="true">📱</span>
-                0 (532) 232 64 52 (Ahmet C.)
+                0 (541) 232 64 52
               </a>
 
-              <a href="mailto:info@cebeciismakineleri.com">
+              <a href="mailto:cebeciahmetfb@hotmail.com">
                 <span aria-hidden="true">✉</span>
-                info@cebeciismakineleri.com
+                cebeciahmetfb@hotmail.com
               </a>
-            </div>
-
-            <div className={styles.workingHours}>
-              Pazartesi – Cumartesi: 08.30 – 18.00
             </div>
           </div>
         </div>
@@ -88,7 +129,7 @@ export function Header() {
           <div className={styles.searchBarContainer}>
             <form
               className={styles.searchForm}
-              onSubmit={(event) => event.preventDefault()}
+              onSubmit={handleSearchSubmit}
             >
               <label
                 htmlFor="header-product-search"
@@ -100,6 +141,8 @@ export function Header() {
               <input
                 id="header-product-search"
                 type="search"
+                value={searchTerm}
+                onChange={(event) => handleSearchChange(event.target.value)}
                 placeholder="Ürün, marka veya yedek parça ara..."
               />
 
@@ -111,8 +154,8 @@ export function Header() {
             <div className={styles.quickContact}>
               <span>Hızlı destek hattı</span>
 
-              <a href="tel:+903224281122">
-                0 (322) 428 11 22
+              <a href="tel:+905412326452">
+                0 (541) 232 64 52
               </a>
             </div>
           </div>

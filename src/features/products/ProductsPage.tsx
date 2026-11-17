@@ -1,14 +1,33 @@
-import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { products, categoryLabels } from '../../data/products'
 import { PageHeader } from '../../components/common/pageHeader/pageHeader'
 import { SEO } from '../../components/common/seo/SEO'
 import styles from './productsPage.module.css'
 
-export function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [selectedBrand, setSelectedBrand] = useState<string | null>(null)
+function normalizeSearchText(value: string): string {
+  return value
+    .toLocaleLowerCase('tr-TR')
+    .replace(/ğ/g, 'g')
+    .replace(/ü/g, 'u')
+    .replace(/ş/g, 's')
+    .replace(/ı/g, 'i')
+    .replace(/ö/g, 'o')
+    .replace(/ç/g, 'c')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+}
 
-  const phoneNumber = '905322326452'
+export function ProductsPage() {
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const selectedCategory = searchParams.get('kategori')
+  const selectedBrand = searchParams.get('marka')
+  const searchQuery = (searchParams.get('q') ?? '').trim()
+  const searchTokens = normalizeSearchText(searchQuery)
+    .split(/\s+/)
+    .filter(Boolean)
+
+  const phoneNumber = '905412326452'
 
   // Benzersiz kategorileri ve markaları çıkar
   const categories = Array.from(new Set(products.map(p => p.category))).sort()
@@ -18,8 +37,36 @@ export function ProductsPage() {
   const filteredProducts = products.filter(p => {
     if (selectedCategory && p.category !== selectedCategory) return false
     if (selectedBrand && p.brand !== selectedBrand) return false
+
+    if (searchTokens.length > 0) {
+      const categoryLabel = categoryLabels[p.category] || p.category
+      const searchable = normalizeSearchText(
+        [p.name, p.brand ?? '', p.shortDescription ?? '', p.category, categoryLabel].join(' '),
+      )
+      if (!searchTokens.every(token => searchable.includes(token))) {
+        return false
+      }
+    }
+
     return true
   })
+
+  const updateFilterParam = (key: string, value: string | null) => {
+    const nextParams = new URLSearchParams(searchParams)
+    if (value) {
+      nextParams.set(key, value)
+    } else {
+      nextParams.delete(key)
+    }
+    setSearchParams(nextParams, { replace: true })
+  }
+
+  const setSelectedCategory = (cat: string | null) => updateFilterParam('kategori', cat)
+  const setSelectedBrand = (brand: string | null) => updateFilterParam('marka', brand)
+  const clearSearch = () => updateFilterParam('q', null)
+  const clearAllFilters = () => setSearchParams({}, { replace: true })
+
+  const hasActiveFilters = Boolean(selectedCategory || selectedBrand || searchQuery)
 
   const getWhatsAppLink = (productName: string) => {
     const encodedMessage = encodeURIComponent(`Merhaba, ${productName} hakkında bilgi almak istiyorum.`)
@@ -91,6 +138,53 @@ export function ProductsPage() {
         </aside>
 
         <main className={styles.content}>
+          <div className={styles.resultsToolbar}>
+            <span className={styles.resultsCount}>
+              {searchQuery
+                ? `"${searchQuery}" için ${filteredProducts.length} ürün bulundu`
+                : `${filteredProducts.length} ürün listeleniyor`}
+            </span>
+
+            {hasActiveFilters && (
+              <div className={styles.activeFilters}>
+                {searchQuery && (
+                  <button
+                    type="button"
+                    className={styles.filterChip}
+                    onClick={clearSearch}
+                  >
+                    Arama: {searchQuery} ×
+                  </button>
+                )}
+                {selectedCategory && (
+                  <button
+                    type="button"
+                    className={styles.filterChip}
+                    onClick={() => setSelectedCategory(null)}
+                  >
+                    {categoryLabels[selectedCategory] || selectedCategory} ×
+                  </button>
+                )}
+                {selectedBrand && (
+                  <button
+                    type="button"
+                    className={styles.filterChip}
+                    onClick={() => setSelectedBrand(null)}
+                  >
+                    {selectedBrand} ×
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className={styles.clearFiltersButton}
+                  onClick={clearAllFilters}
+                >
+                  Tümünü Temizle
+                </button>
+              </div>
+            )}
+          </div>
+
           <div className={styles.productsGrid}>
             {filteredProducts.map(product => (
               <div key={product.id} className={styles.productCard}>
@@ -119,9 +213,18 @@ export function ProductsPage() {
             ))}
           </div>
           {filteredProducts.length === 0 && (
-            <p style={{ textAlign: 'center', marginTop: '40px', color: '#666' }}>
-              Seçilen filtrelere uygun ürün bulunamadı.
-            </p>
+            <div className={styles.emptyState}>
+              <p>Aramanıza veya seçilen filtrelere uygun ürün bulunamadı.</p>
+              {hasActiveFilters && (
+                <button
+                  type="button"
+                  className={styles.resetButton}
+                  onClick={clearAllFilters}
+                >
+                  Tüm Filtreleri Temizle
+                </button>
+              )}
+            </div>
           )}
         </main>
       </div>

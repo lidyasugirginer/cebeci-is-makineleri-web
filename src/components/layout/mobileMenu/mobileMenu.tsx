@@ -75,14 +75,14 @@ export function MobileMenu({
           </span>
 
           <a
-            href="tel:+903221234567"
+            href="tel:+905412326452"
             className={styles.phone}
           >
-            +90 322 123 45 67
+            0 (541) 232 64 52
           </a>
 
           <a
-            href="#teklif"
+            href="/iletisim#teklif-formu"
             className={styles.quoteButton}
             onClick={onClose}
           >

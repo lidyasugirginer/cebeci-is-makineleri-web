@@ -6,7 +6,7 @@ interface Props {
 }
 
 export function FloatingWhatsAppButton({
-  phoneNumber = '905322326452',
+  phoneNumber = '905412326452',
   message = 'Merhaba, Cebeci İş Makineleri ile iletişime geçmek istiyorum.',
 }: Props) {
   const encodedMessage = encodeURIComponent(message)

@@ -87,10 +87,19 @@ export function Footer() {
                   <strong>Adres</strong>
 
                   <p>
-                    Yeşiloba Mahallesi, Yeni Sanayi Sitesi
-                    46117 Sokak, 5. Blok
+                    Yeşiloba, 46117. Sk. Metal Sanayi Sitesi
+                    NO:53 D:5. BLOK
                     <br />
-                    Seyhan / Adana
+                    01100 Seyhan/Adana
+                    <br />
+                    <a 
+                      href="https://maps.app.goo.gl/BgADofXqW6oNsWj88" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style={{ color: '#e87522', fontWeight: 600, display: 'inline-block', marginTop: '4px' }}
+                    >
+                      Haritada Gör ↗
+                    </a>
                   </p>
                 </div>
               </div>
@@ -108,8 +117,7 @@ export function Footer() {
 
                   <p style={{ margin: '5px 0 0 0' }}>
                     <a href="tel:+903224281122">0 322 428 11 22</a><br />
-                    <a href="tel:+903224287766">0 322 428 77 66</a><br />
-                    <a href="tel:+905322326452">0 532 232 64 52 (Sorumlu: Ahmet Cebeci)</a>
+                    <a href="tel:+905412326452">0 541 232 64 52</a>
                   </p>
                 </div>
               </div>
@@ -125,8 +133,8 @@ export function Footer() {
                 <div>
                   <strong>E-posta</strong>
 
-                  <a href="mailto:info@cebecisismakineleri.com">
-                    info@cebecisismakineleri.com
+                  <a href="mailto:cebeciahmetfb@hotmail.com">
+                    cebeciahmetfb@hotmail.com
                   </a>
                 </div>
               </div>

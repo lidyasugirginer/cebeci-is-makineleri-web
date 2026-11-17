@@ -4,7 +4,7 @@ import { services } from '../../data/services'
 import styles from './servicesPage.module.css'
 
 export function ServicesPage() {
-  const phoneNumber = '905000000000'
+  const phoneNumber = '905412326452'
   const encodedMessage = encodeURIComponent('Merhaba, sunduğunuz hizmetler hakkında detaylı bilgi almak istiyorum.')
   const waLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
 
