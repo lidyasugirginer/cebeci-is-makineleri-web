@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.cebeciismakineleri.com/sitemap.xml
+Sitemap: https://www.cebeciismakinalari.com/sitemap.xml
