@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react'
+import { useEffect, useMemo, useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { SEO } from '../../components/common/seo/SEO'
 import { categoryLabels } from '../../data/products'
@@ -10,6 +10,7 @@ import type { Product } from '../../types/products'
 import styles from './adminPage.module.css'
 
 const CUSTOM_OPTION = '__custom__'
+const IDLE_TIMEOUT_MS = 15 * 60 * 1000 // 15 dakika işlem yapılmazsa otomatik çıkış
 
 const DEFAULT_BRANDS = ['CAT', 'Komatsu', 'Cummins', 'Isuzu', 'JCB', 'Çeşitli']
 
@@ -23,7 +24,9 @@ export function AdminPage() {
   const [loginEmail, setLoginEmail] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
   const [loginError, setLoginError] = useState('')
+  const [loginNotice, setLoginNotice] = useState('')
   const [loginBusy, setLoginBusy] = useState(false)
+  const lastActivityRef = useRef<number>(0)
 
   // Product form state
   const [editingProductId, setEditingProductId] = useState<string | null>(null)
@@ -65,6 +68,42 @@ export function AdminPage() {
       listener.subscription.unsubscribe()
     }
   }, [])
+
+  useEffect(() => {
+    if (!supabase || !sessionEmail) return
+
+    lastActivityRef.current = Date.now()
+
+    const updateActivity = () => {
+      lastActivityRef.current = Date.now()
+    }
+
+    const checkIdle = () => {
+      if (Date.now() - lastActivityRef.current >= IDLE_TIMEOUT_MS) {
+        supabase?.auth.signOut()
+        setSessionEmail(null)
+        setLoginNotice('Güvenlik nedeniyle 15 dakika işlem yapılmadığı için oturumunuz kapatıldı.')
+      }
+    }
+
+    const events: (keyof WindowEventMap)[] = [
+      'mousemove',
+      'mousedown',
+      'keydown',
+      'scroll',
+      'touchstart',
+    ]
+
+    events.forEach((ev) => window.addEventListener(ev, updateActivity, { passive: true }))
+    document.addEventListener('visibilitychange', checkIdle)
+    const intervalId = window.setInterval(checkIdle, 15_000)
+
+    return () => {
+      events.forEach((ev) => window.removeEventListener(ev, updateActivity))
+      document.removeEventListener('visibilitychange', checkIdle)
+      window.clearInterval(intervalId)
+    }
+  }, [sessionEmail])
 
   useEffect(() => {
     return () => {
@@ -109,6 +148,7 @@ export function AdminPage() {
     if (!supabase) return
 
     setLoginError('')
+    setLoginNotice('')
     setLoginBusy(true)
 
     const rawIdentifier = loginEmail.trim().toLowerCase()
@@ -130,6 +170,7 @@ export function AdminPage() {
 
   const handleLogout = async () => {
     if (!supabase) return
+    setLoginNotice('')
     await supabase.auth.signOut()
   }
 
@@ -347,6 +388,7 @@ export function AdminPage() {
               />
             </div>
 
+            {loginNotice && <div className={styles.warningBanner}>{loginNotice}</div>}
             {loginError && <div className={styles.errorAlert}>{loginError}</div>}
 
             <button
