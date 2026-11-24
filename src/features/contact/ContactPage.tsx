@@ -48,7 +48,7 @@ export function ContactPage() {
             <div className={styles.infoItem}>
               <h3>✉️ E-posta</h3>
               <p>
-                <a href="mailto:cebeciahmetfb@hotmail.com">cebeciahmetfb@hotmail.com</a>
+                <a href="mailto:info@cebeciismakinalari.com">info@cebeciismakinalari.com</a>
               </p>
             </div>
 

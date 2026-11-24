@@ -1,7 +1,7 @@
 .footer {
   width: 100%;
   color: #ffffff;
-  background-color: #142638;
+  background-color: var(--color-primary-dark);
 }
 
 .mainFooter {
@@ -9,8 +9,8 @@
   background:
     linear-gradient(
       135deg,
-      #192c3f 0%,
-      #122436 100%
+      #043673 0%,
+      #021f45 100%
     );
 }
 
@@ -68,7 +68,7 @@
   padding: 0 18px;
   border-radius: 4px;
   background-color: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-accent-on-accent);
   text-decoration: none;
   font-size: 0.72rem;
   font-weight: 800;
@@ -206,8 +206,8 @@
 }
 
 .bottomBar {
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  background-color: #0d1b28;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #021836;
 }
 
 .bottomContainer {

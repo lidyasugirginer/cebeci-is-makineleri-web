@@ -14,11 +14,11 @@
     background:
     linear-gradient(
         90deg,
-        rgba(15,25,35,.86) 0%,
-        rgba(15,25,35,.73) 28%,
-        rgba(15,25,35,.52) 48%,
-        rgba(15,25,35,.18) 72%,
-        rgba(15,25,35,0) 100%
+        rgba(4, 34, 72, 0.88) 0%,
+        rgba(4, 34, 72, 0.74) 28%,
+        rgba(4, 34, 72, 0.52) 48%,
+        rgba(4, 34, 72, 0.18) 72%,
+        rgba(4, 34, 72, 0) 100%
     );
 
     z-index:1;
@@ -34,12 +34,12 @@
   background:
     linear-gradient(
       to right,
-      rgba(12, 23, 34, 0.88) 0%,
-      rgba(12, 23, 34, 0.80) 18%,
-      rgba(12, 23, 34, 0.58) 34%,
-      rgba(12, 23, 34, 0.28) 48%,
-      rgba(12, 23, 34, 0.08) 60%,
-      rgba(12, 23, 34, 0) 70%
+      rgba(3, 28, 60, 0.90) 0%,
+      rgba(3, 28, 60, 0.82) 18%,
+      rgba(3, 28, 60, 0.58) 34%,
+      rgba(3, 28, 60, 0.28) 48%,
+      rgba(3, 28, 60, 0.08) 60%,
+      rgba(3, 28, 60, 0) 70%
     );
 }
 
@@ -61,7 +61,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 17px;
-  color: #f2944b;
+  color: var(--color-accent);
   font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -72,7 +72,7 @@
   content: '';
   width: 34px;
   height: 2px;
-  background-color: #e77d2f;
+  background-color: var(--color-accent);
 }
 
 .content h1 {
@@ -123,7 +123,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: #e77d2f;
+  background-color: var(--color-accent);
   transform: translateY(-50%);
 }
 
@@ -154,15 +154,15 @@
 }
 
 .primaryButton {
-  background-color: #e77d2f;
-  color: #ffffff;
-  box-shadow: 0 10px 24px rgba(231, 125, 47, 0.28);
+  background-color: var(--color-accent);
+  color: var(--color-accent-on-accent);
+  box-shadow: 0 10px 24px rgba(255, 237, 0, 0.28);
 }
 
 .primaryButton:hover {
-  background-color: #cd671f;
+  background-color: var(--color-accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(231, 125, 47, 0.35);
+  box-shadow: 0 14px 30px rgba(255, 237, 0, 0.38);
 }
 
 .secondaryButton {
@@ -187,9 +187,9 @@
     background:
       linear-gradient(
         90deg,
-        rgba(10, 24, 37, 0.91) 0%,
-        rgba(10, 24, 37, 0.76) 55%,
-        rgba(10, 24, 37, 0.3) 100%
+        rgba(3, 28, 60, 0.92) 0%,
+        rgba(3, 28, 60, 0.76) 55%,
+        rgba(3, 28, 60, 0.3) 100%
       );
   }
 
@@ -205,7 +205,7 @@
   }
 
   .overlay {
-    background: rgba(10, 24, 37, 0.78);
+    background: rgba(3, 28, 60, 0.80);
   }
 
   .container {

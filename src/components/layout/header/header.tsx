@@ -77,9 +77,9 @@ export function Header() {
                 0 (541) 232 64 52
               </a>
 
-              <a href="mailto:cebeciahmetfb@hotmail.com">
+              <a href="mailto:info@cebeciismakinalari.com">
                 <span aria-hidden="true">✉</span>
-                cebeciahmetfb@hotmail.com
+                info@cebeciismakinalari.com
               </a>
             </div>
           </div>

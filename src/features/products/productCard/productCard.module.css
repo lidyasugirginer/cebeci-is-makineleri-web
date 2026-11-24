@@ -65,7 +65,7 @@
 
 .category {
   margin-bottom: 9px;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.08em;

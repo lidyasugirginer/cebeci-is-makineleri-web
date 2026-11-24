@@ -96,7 +96,7 @@ export function Footer() {
                       href="https://maps.app.goo.gl/BgADofXqW6oNsWj88" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      style={{ color: '#e87522', fontWeight: 600, display: 'inline-block', marginTop: '4px' }}
+                      style={{ color: 'var(--color-accent)', fontWeight: 600, display: 'inline-block', marginTop: '4px' }}
                     >
                       Haritada Gör ↗
                     </a>
@@ -133,8 +133,8 @@ export function Footer() {
                 <div>
                   <strong>E-posta</strong>
 
-                  <a href="mailto:cebeciahmetfb@hotmail.com">
-                    cebeciahmetfb@hotmail.com
+                  <a href="mailto:info@cebeciismakinalari.com">
+                    info@cebeciismakinalari.com
                   </a>
                 </div>
               </div>

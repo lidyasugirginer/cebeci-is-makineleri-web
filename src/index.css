@@ -41,14 +41,16 @@ img {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 
-  --color-primary: #173f67;
-  --color-primary-dark: #102e4b;
-  --color-primary-soft: #e8f0f7;
+  --color-primary: #043673;
+  --color-primary-dark: #032654;
+  --color-primary-soft: #e8eff8;
 
-  --color-accent: #e87522;
-  --color-accent-dark: #c95e13;
+  --color-accent: #ffed00;
+  --color-accent-dark: #e6d600;
+  --color-accent-text: #008453;
+  --color-accent-on-accent: #043673;
 
-  --color-heading: #17232e;
+  --color-heading: #04224a;
   --color-text: #26313b;
   --color-text-muted: #66727d;
 

@@ -1,11 +1,13 @@
 import { useParams } from 'react-router-dom'
 import { PageHeader } from '../../components/common/pageHeader/pageHeader'
 import { SEO } from '../../components/common/seo/SEO'
-import { products, categoryLabels } from '../../data/products'
+import { categoryLabels } from '../../data/products'
+import { useProducts } from '../../hooks/useProducts'
 import styles from './productDetailPage.module.css'
 
 export function ProductDetailPage() {
   const { productId } = useParams<{ productId: string }>()
+  const { products, loading } = useProducts()
   const phoneNumber = '905412326452'
   
   // Örnek: Eğer productId gelmezse test amaçlı ilk ürünü göster
@@ -13,10 +15,19 @@ export function ProductDetailPage() {
     ? products.find(p => p.id === productId || p.slug === productId)
     : products[0]
 
+  if (!product && loading) {
+    return (
+      <div>
+        <PageHeader title="Yükleniyor..." breadcrumbs={[{ label: 'Anasayfa', href: '/' }, { label: 'Ürünler', href: '/urun-gruplari' }]} />
+        <div className={styles.notFound}>Ürün bilgileri yükleniyor...</div>
+      </div>
+    )
+  }
+
   if (!product) {
     return (
       <div>
-        <PageHeader title="Ürün Bulunamadı" breadcrumbs={[{ label: 'Anasayfa', href: '/' }, { label: 'Ürünler', href: '/urunler' }]} />
+        <PageHeader title="Ürün Bulunamadı" breadcrumbs={[{ label: 'Anasayfa', href: '/' }, { label: 'Ürünler', href: '/urun-gruplari' }]} />
         <div className={styles.notFound}>Aradığınız ürün bulunamadı veya yayından kaldırılmış olabilir.</div>
       </div>
     )

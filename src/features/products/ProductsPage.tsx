@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
-import { products, categoryLabels } from '../../data/products'
+import { categoryLabels } from '../../data/products'
+import { useProducts } from '../../hooks/useProducts'
 import { PageHeader } from '../../components/common/pageHeader/pageHeader'
 import { SEO } from '../../components/common/seo/SEO'
 import styles from './productsPage.module.css'
@@ -18,6 +19,7 @@ function normalizeSearchText(value: string): string {
 }
 
 export function ProductsPage() {
+  const { products } = useProducts()
   const [searchParams, setSearchParams] = useSearchParams()
 
   const selectedCategory = searchParams.get('kategori')

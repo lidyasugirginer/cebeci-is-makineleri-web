@@ -1,0 +1,476 @@
+.pageWrapper {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background-color: var(--color-surface);
+}
+
+.loginCard {
+  width: min(440px, 100%);
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 34px 30px;
+  box-shadow: var(--shadow-card);
+  border-top: 4px solid var(--color-accent);
+}
+
+.loginCard h1 {
+  margin: 10px 0 8px;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.helperText {
+  margin: 0 0 22px;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.setupChecklist {
+  margin: 0 0 20px;
+  padding-left: 18px;
+  color: var(--color-primary);
+  font-family: monospace;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.backHomeLink {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--color-primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.backHomeLink:hover {
+  text-decoration: underline;
+}
+
+.dashboardWrapper {
+  width: min(1220px, calc(100% - 32px));
+  margin: 28px auto 60px;
+}
+
+.topBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 26px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-bottom: 4px solid var(--color-accent);
+}
+
+.topBar .badge {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.topBar h1 {
+  margin: 8px 0 0;
+  font-size: 1.55rem;
+  color: #ffffff;
+}
+
+.topBarActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.userEmail {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 15px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: background-color 0.2s;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(255, 255, 255, 0.24);
+}
+
+.logoutButton {
+  padding: 9px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 5px;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.warningBanner {
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  background-color: #fff8db;
+  border: 1px solid #f0d040;
+  color: #5c4600;
+  font-size: 0.9rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(340px, 430px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.formCard,
+.listCard {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.formCard {
+  position: sticky;
+  top: 20px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cardHeader h2,
+.listHeader h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+.cancelEditButton {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.optionalTag {
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.field input[type='text'],
+.field input[type='email'],
+.field input[type='password'],
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--color-text);
+  font-size: 0.94rem;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(4, 54, 115, 0.12);
+}
+
+.subInput {
+  margin-top: 6px;
+}
+
+.fileInput {
+  padding: 10px;
+  border: 1px dashed #94a3b8;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  cursor: pointer;
+}
+
+.previewBox {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.previewBox img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  border-radius: 4px;
+  background-color: #ffffff;
+  padding: 4px;
+}
+
+.previewBox span {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  word-break: break-all;
+}
+
+.primaryButton {
+  min-height: 44px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-accent);
+  color: var(--color-accent-on-accent);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.primaryButton:hover:not(:disabled) {
+  background-color: var(--color-accent-dark);
+}
+
+.primaryButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.successAlert {
+  padding: 10px 14px;
+  border-radius: 6px;
+  background-color: #e6f6ef;
+  border: 1px solid #008453;
+  color: #005c3a;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.errorAlert {
+  padding: 10px 14px;
+  border-radius: 6px;
+  background-color: #fef2f2;
+  border: 1px solid #dc2626;
+  color: #991b1b;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.listHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.listFilters {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 10px;
+}
+
+.searchInput,
+.filterSelect {
+  padding: 9px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background-color: #ffffff;
+}
+
+.productList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.productRow {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.rowInfo {
+  min-width: 0;
+}
+
+.rowInfo strong {
+  display: block;
+  color: var(--color-heading);
+  font-size: 0.96rem;
+  margin-bottom: 5px;
+}
+
+.rowMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.brandBadge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.rowActions {
+  display: flex;
+  gap: 8px;
+}
+
+.editButton,
+.deleteButton {
+  padding: 7px 12px;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.editButton {
+  border: 1px solid var(--color-primary);
+  background-color: #ffffff;
+  color: var(--color-primary);
+}
+
+.editButton:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.deleteButton {
+  border: 1px solid #dc2626;
+  background-color: #ffffff;
+  color: #dc2626;
+}
+
+.deleteButton:hover:not(:disabled) {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.emptyText {
+  padding: 24px 0;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 920px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .formCard {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .listFilters {
+    grid-template-columns: 1fr;
+  }
+
+  .productRow {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  .rowActions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}

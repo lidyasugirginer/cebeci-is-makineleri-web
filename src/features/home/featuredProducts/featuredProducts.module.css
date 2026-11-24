@@ -24,7 +24,7 @@
 }
 
 .allProductsLink:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .productGrid {

@@ -17,7 +17,7 @@
   display: inline-flex;
   align-items: center;
   min-height: 42px;
-  color: #1b2c3b;
+  color: #0b1f3a;
   text-decoration: none;
   font-size: 0.82rem;
   font-weight: 750;
@@ -33,14 +33,14 @@
   bottom: 3px;
   left: 0;
   height: 2px;
-  background-color: #e87522;
+  background-color: var(--color-accent);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.25s ease;
 }
 
 .navigation a:hover {
-  color: #e87522;
+  color: var(--color-primary);
 }
 
 .navigation a:hover::after {

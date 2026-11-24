@@ -28,7 +28,7 @@
 
 .serviceCard:hover {
   transform: translateY(-7px);
-  border-color: rgba(232, 117, 34, 0.42);
+  border-color: var(--color-accent);
   box-shadow: var(--shadow-card-hover);
 }
 

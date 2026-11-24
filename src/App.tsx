@@ -11,6 +11,7 @@ import { ServicesPage } from './features/services/ServicesPage'
 import { AboutPage } from './features/about/AboutPage'
 import { ProductsPage } from './features/products/ProductsPage'
 import { ProductDetailPage } from './features/products/ProductDetailPage'
+import { AdminPage } from './features/admin/AdminPage'
 
 function HomePage() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/urunler" element={<ProductsPage />} />
           <Route path="/urun-gruplari" element={<ProductsPage />} />
           <Route path="/urunler/:productId" element={<ProductDetailPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </MainLayout>
     </BrowserRouter>
