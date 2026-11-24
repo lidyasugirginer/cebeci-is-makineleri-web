@@ -111,15 +111,20 @@ export function AdminPage() {
     setLoginError('')
     setLoginBusy(true)
 
+    const rawIdentifier = loginEmail.trim().toLowerCase()
+    const resolvedEmail = rawIdentifier.includes('@')
+      ? rawIdentifier
+      : `${rawIdentifier}@cebeciismakinalari.com`
+
     const { error } = await supabase.auth.signInWithPassword({
-      email: loginEmail.trim(),
+      email: resolvedEmail,
       password: loginPassword,
     })
 
     setLoginBusy(false)
 
     if (error) {
-      setLoginError('E-posta adresi veya şifre hatalı. Lütfen tekrar deneyin.')
+      setLoginError('Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyin.')
     }
   }
 
@@ -318,13 +323,14 @@ export function AdminPage() {
 
           <form onSubmit={handleLogin} className={styles.form}>
             <div className={styles.field}>
-              <label htmlFor="admin-email">E-posta</label>
+              <label htmlFor="admin-email">Kullanıcı Adı</label>
               <input
                 id="admin-email"
-                type="email"
+                type="text"
+                autoComplete="username"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
-                placeholder="ornek@cebeciismakinalari.com"
+                placeholder="admin"
                 required
               />
             </div>
@@ -372,7 +378,9 @@ export function AdminPage() {
           <h1>Ürün Yönetim Merkezi</h1>
         </div>
         <div className={styles.topBarActions}>
-          <span className={styles.userEmail}>{sessionEmail}</span>
+          <span className={styles.userEmail}>
+            {sessionEmail.replace('@cebeciismakinalari.com', '')}
+          </span>
           <Link to="/urun-gruplari" className={styles.secondaryButton}>
             Kataloğu Gör
           </Link>
