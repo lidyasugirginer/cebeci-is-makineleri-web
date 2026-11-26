@@ -136,6 +136,9 @@ export function Footer() {
                   <a href="mailto:info@cebeciismakinalari.com">
                     info@cebeciismakinalari.com
                   </a>
+                  <a href="mailto:cebeciahmetfb@hotmail.com">
+                    cebeciahmetfb@hotmail.com
+                  </a>
                 </div>
               </div>
             </address>
